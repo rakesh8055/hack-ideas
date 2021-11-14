@@ -20,4 +20,4 @@ test('verify logo to be present in the navbar', () => {
     const { getByTestId } = render(<Navbar/>);
     const logo = getByTestId('logo');
     expect(logo).toBeInTheDocument();
-})
+});
