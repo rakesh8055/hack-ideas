@@ -1,5 +1,6 @@
 import React from 'react';
 import './Card.styles.scss';
+import { AiOutlineLike } from 'react-icons/ai';
 
 const Card = ({title, subtitle, text, tags, likes}) => {
     return (
@@ -10,9 +11,9 @@ const Card = ({title, subtitle, text, tags, likes}) => {
             <h6 data-testid='card-subtitle' className="card-subtitle mb-2 text-muted">{subtitle}</h6>
           )}
           <p data-testid='card-text' className="card-text">{text}</p>
-          <div className='footer'>
-            {tags && <div className='tags-container'>{ tags.map((tag) => <small key={tag} data-testid='card-tags' className="text-muted">{tag}</small>)}</div>}
-            {likes && <div className='votes'><span data-testid='card-votes'>{likes}</span></div>
+          <div className='footer d-flex justify-content-between'>
+            {tags && <div className='tags-container'>{ tags.map((tag) => <div key={tag} data-testid='card-tags' className="card-tags badge rounded-pill">{tag}</div>)}</div>}
+            {likes && <div className='votes d-flex justify-content-between align-items-center'><button><AiOutlineLike/></button><span className='rounded-circle' data-testid='card-votes'>{likes}</span></div>
             }  
           </div>
         </div>

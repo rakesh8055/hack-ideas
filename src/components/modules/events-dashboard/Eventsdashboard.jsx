@@ -11,7 +11,7 @@ const Eventsdashboard = () => {
         </div>
         <div className='container'>
             <div className='row'>
-                {EVENTS.map((item) => <div key={item.id} className='col-md-3 col-sm-4 p-2 rounded'><Card {...item}/></div>)}
+                {EVENTS.map((item) => <div key={item.id} className='col-md-4 col-sm-6 p-2 rounded'><Card {...item}/></div>)}
             </div>
         </div>
     </div>)
