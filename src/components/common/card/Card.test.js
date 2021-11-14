@@ -6,7 +6,7 @@ import Card from './Card';
 
 const props = {
     title: 'title1',
-    description: 'text',
+    text: 'text',
     tags: ['tag1'],
     noOfVotes: 3
 }
@@ -32,5 +32,5 @@ test('verify the tags are displayed', () => {
 test('verify the votes are displayed', () => {
     const { getByTestId } = render(<Card {...props}/>);
     const votes = getByTestId('card-votes');
-    expect(votes.textContent).toBe(props.noOfVotes);
+    expect(Number(votes.textContent)).toBe(props.noOfVotes);
 });
