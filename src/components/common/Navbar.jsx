@@ -1,4 +1,5 @@
 import "./Navbar.styles.scss";
+import { ReactComponent as Logo} from '../../svg/logo-white.svg';
 
 const Navbar = () => {
   return (
@@ -6,7 +7,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg navbar-dark">
         <div className="container-fluid">
           <a data-testid='logo' className="navbar-brand" href="/">
-            HI
+            <Logo height='40px' width='50px'/>
           </a>
           <button
             className="navbar-toggler"
