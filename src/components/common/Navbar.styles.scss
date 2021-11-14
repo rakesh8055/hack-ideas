@@ -1,0 +1,21 @@
+.nav-container {
+    background-color: gray;
+    position: fixed;
+    width: 100%;
+    top: 0;
+
+    #navbarNavAltMarkup {
+        justify-content: right;
+      }
+    .navbar-brand {
+        height: 40px;
+    }
+
+    .navbar-nav {
+        text-align: right;
+    }
+
+    .nav-link {
+        padding-right: 10px;
+      }
+}
