@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Card = ({title, subtitle, text, tags, noOfVotes}) => {
+const Card = ({title, subtitle, text, tags, likes}) => {
     return (
       <div className="card">
         <div className="card-body">
@@ -10,16 +10,12 @@ const Card = ({title, subtitle, text, tags, noOfVotes}) => {
           )}
           <p data-testid='card-text' className="card-text">{text}</p>
           <div className='footer'>
-            <div className='tags-container'>
-                { tags.map((tag) => <small key={tag} data-testid='card-tags' className="text-muted">{tag}</small>) } 
-            </div>
-            <div className='votes'>
-                <span data-testid='card-votes'>{noOfVotes}</span>
-            </div>
+            {tags && <div className='tags-container'>{ tags.map((tag) => <small key={tag} data-testid='card-tags' className="text-muted">{tag}</small>)}</div>}
+            {likes && <div className='votes'><span data-testid='card-votes'>{likes}</span></div>
+            }  
           </div>
         </div>
       </div>
     );
 }
-
 export default Card;

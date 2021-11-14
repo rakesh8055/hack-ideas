@@ -8,7 +8,7 @@ const props = {
     title: 'title1',
     text: 'text',
     tags: ['tag1'],
-    noOfVotes: 3
+    likes: 3
 }
 
 test('verify card title is displayed', () => {
@@ -32,5 +32,5 @@ test('verify the tags are displayed', () => {
 test('verify the votes are displayed', () => {
     const { getByTestId } = render(<Card {...props}/>);
     const votes = getByTestId('card-votes');
-    expect(Number(votes.textContent)).toBe(props.noOfVotes);
+    expect(Number(votes.textContent)).toBe(props.likes);
 });
