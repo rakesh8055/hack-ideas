@@ -1,8 +1,9 @@
 import React from 'react';
+import './Card.styles.scss';
 
 const Card = ({title, subtitle, text, tags, likes}) => {
     return (
-      <div className="card">
+      <div className="card border-0">
         <div className="card-body">
           <h5 data-testid='card-title' className="card-title">{title}</h5>
           {subtitle && (

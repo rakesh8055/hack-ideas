@@ -2,6 +2,7 @@
   --radius: 10px;
   --primary: #de4e41;
   --secondary:  #f4eed4;
+  --tertiary:#d6d0ad;;
 }
 
 body {
@@ -12,7 +13,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
-  background-color:#d6d0ad;;
+  background-color: var(--tertiary);
 }
 
 code {
