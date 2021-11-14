@@ -10,3 +10,9 @@ test('verify if header appears', () => {
     expect(header.textContent).toBe('Hack Ideas');
 });
 
+test('verify if background image is present', () => {
+    const { getByTestId } = render(<Home/>);
+    const homeBackgroundImage = getByTestId('home-image');
+    expect(homeBackgroundImage).toBeInTheDocument();
+});
+

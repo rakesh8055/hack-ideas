@@ -9,7 +9,7 @@ const Home = () => (
                 <h2 data-testid='header'>Hack Ideas</h2>
             </div>
             <div className='app-image'>
-                <img src={HomePageImg} alt='HomePage'/>
+                <img data-testid='home-image' src={HomePageImg} alt='HomePage'/>
             </div>
         </div>
     </div>
