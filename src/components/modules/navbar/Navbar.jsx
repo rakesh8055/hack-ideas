@@ -1,5 +1,5 @@
 import "./Navbar.styles.scss";
-import { ReactComponent as Logo} from '../../svg/logo-white.svg';
+import { ReactComponent as Logo} from '../../../svg/logo-white.svg';
 
 const Navbar = () => {
   return (
