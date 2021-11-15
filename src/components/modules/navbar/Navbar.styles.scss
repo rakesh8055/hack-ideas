@@ -11,6 +11,12 @@
 
     .navbar-nav {
         text-align: right;
+
+        .login-btn {
+          button {
+            background-color: #372236;
+          }
+        }
     }
 
     .nav-link {

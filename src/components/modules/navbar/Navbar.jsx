@@ -28,6 +28,12 @@ const Navbar = () => {
               <a data-testid='ideas' className="nav-link" href="#events-dashboard">
                 Ideas/Challenges
               </a>
+              <div className="login-btn d-flex justify-content-end align-items-center ps-4">
+                <button type="button"
+                  className="border-0 rounded text-white"
+                  data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                >Login</button>
+              </div>
             </div>
           </div>
         </div>

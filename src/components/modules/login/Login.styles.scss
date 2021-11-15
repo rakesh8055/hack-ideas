@@ -1,0 +1,11 @@
+.google-login-btn {
+    height: 80px;
+    width: 80px;
+    border-radius: var(--radius);
+    cursor: pointer;
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+}
