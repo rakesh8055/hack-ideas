@@ -10,7 +10,7 @@ const Eventsdashboard = () => {
     const [didSortChange, setSortChange] = useState(false);
 
     const sortEventsBy = (sortBy, sortType) => {
-        return EVENTS.sort((a, b) => {
+        return events.sort((a, b) => {
             const isAscendingOrDescending = (sortType === 'asc') ? 1 : -1;
             return (isAscendingOrDescending * (sortBy === 'creationDate' ? new Date(a[sortBy]) : a[sortBy])) - (isAscendingOrDescending * (sortBy === 'creationDate' ? new Date(b[sortBy]) : b[sortBy]));
         });
@@ -19,8 +19,10 @@ const Eventsdashboard = () => {
     const handleSortSelectionChange = (e) => {
         const { value } = e.target;
         setSortChange(prev => !prev);
-        const sortObj = sortByOptions.filter((item) => item.name === value);
-        setEvents(sortEventsBy(sortObj[0].sortBy, sortObj[0].sortType))
+        if(value !== 'default') {
+            const sortObj = sortByOptions.filter((item) => item.name === value);
+            setEvents(sortEventsBy(sortObj[0].sortBy, sortObj[0].sortType))
+        }
     }
 
     return(
