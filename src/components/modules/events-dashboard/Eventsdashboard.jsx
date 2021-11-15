@@ -5,7 +5,7 @@ import Card from '../../common/card/Card';
 
 const Eventsdashboard = () => {
     return(
-    <div className='container-fluid events-dashboard overflow-scroll'>
+    <div className='container-fluid events-dashboard overflow-scroll' id='events-dashboard'>
         <div className='d-flex justify-content-center p-3'>
             <h4 data-testid='events-title'>Events/Challenges</h4>
         </div>
