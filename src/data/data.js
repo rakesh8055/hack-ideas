@@ -48,6 +48,33 @@ const EVENTS = [
       likes: 6
     }
   ];
+
+  export const sortByOptions = [
+    {
+        id: 1,
+        name: 'Highest likes',
+        sortType: 'desc',
+        sortBy: 'likes'
+    },
+    {
+        id: 2,
+        name: 'Lowest likes',
+        sortType: 'asc',
+        sortBy: 'likes'
+    },
+    {
+        id: 3,
+        name: 'Newest',
+        sortType: 'desc',
+        sortBy: 'creationDate'
+    },
+    {
+        id: 4,
+        name: 'Oldest',
+        sortType: 'asc',
+        sortBy: 'creationDate'
+    }
+]
   
   export default EVENTS;
   

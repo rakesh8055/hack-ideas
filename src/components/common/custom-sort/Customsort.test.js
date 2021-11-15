@@ -6,6 +6,6 @@ import Customsort from './Customsort';
 
 test('verify the sort button is displayed', () => {
     const {getByTestId} = render(<Customsort/>);
-    const sortBtn = getByTestId('sort-btn');
+    const sortBtn = getByTestId('sort');
     expect(sortBtn).toBeInTheDocument();
 })
