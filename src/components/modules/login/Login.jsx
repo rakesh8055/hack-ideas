@@ -1,11 +1,15 @@
 import { FcGoogle } from "react-icons/fc"
 import { signInWithGoogle } from '../../../firebase/firebase.utils';
+import { useDispatch } from "react-redux";
+import { setUser } from "../../../redux/user/user.actions";
 import './Login.styles.scss';
 
 const Login = () => {
+    const dispatch = useDispatch();
+
     const handleclick = () => {
         signInWithGoogle().then((result) => {
-            console.log(result);
+            dispatch(setUser(result.user))
         });
     }
 

@@ -1,7 +1,29 @@
 import "./Navbar.styles.scss";
 import { ReactComponent as Logo} from '../../../svg/logo-white.svg';
+import { useSelector, useDispatch } from "react-redux";
+import { signOut, onAuthStateChanged } from '@firebase/auth';
+import { auth } from '../../../firebase/firebase.utils';
+import { setUser } from "../../../redux/user/user.actions";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const user = useSelector(state => state.user);
+  const dispatch = useDispatch();
+
+  const handleSignout = () => {
+    signOut(auth);
+    dispatch(setUser({}));
+  }
+
+  onAuthStateChanged(auth, (user) => {
+    if( user?.displayName) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  });
+
   return (
     <div className="nav-container">
       <nav className="navbar navbar-expand-lg navbar-dark">
@@ -29,10 +51,12 @@ const Navbar = () => {
                 Ideas/Challenges
               </a>
               <div className="login-btn d-flex justify-content-end align-items-center ps-4">
-                <button type="button"
+                {isLoggedIn ? <button className="border-0 rounded text-white" onClick={handleSignout}>Sign Out</button> :
+                  <button type="button"
                   className="border-0 rounded text-white"
                   data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                 >Login</button>
+                }
               </div>
             </div>
           </div>

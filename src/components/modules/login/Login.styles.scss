@@ -3,6 +3,11 @@
     width: 80px;
     border-radius: var(--radius);
     cursor: pointer;
+    transition: 0.5s;
+
+    &:hover {
+        filter: brightness(80%);
+    }
 
     svg {
         width: 100%;
