@@ -44,7 +44,7 @@ const EVENTS = [
       title: "Title-6",
       text: "Description 6",
       tags: ["design"],
-      creationDate: "2021-8-12",
+      creationDate: "2021-08-12",
       likes: 6
     }
   ];
