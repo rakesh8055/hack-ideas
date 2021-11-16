@@ -1,28 +1,17 @@
 import "./Navbar.styles.scss";
 import { ReactComponent as Logo} from '../../../svg/logo-white.svg';
-import { useSelector, useDispatch } from "react-redux";
-import { signOut, onAuthStateChanged } from '@firebase/auth';
+import { useDispatch } from "react-redux";
+import { signOut } from '@firebase/auth';
 import { auth } from '../../../firebase/firebase.utils';
 import { setUser } from "../../../redux/user/user.actions";
-import { useEffect, useState } from "react";
 
-const Navbar = () => {
-  const [isLoggedIn, setLoggedIn] = useState(false);
-  const user = useSelector(state => state.user);
+const Navbar = ({isLoggedIn}) => {
   const dispatch = useDispatch();
 
   const handleSignout = () => {
     signOut(auth);
     dispatch(setUser({}));
   }
-
-  onAuthStateChanged(auth, (user) => {
-    if( user?.displayName) {
-      setLoggedIn(true);
-    } else {
-      setLoggedIn(false);
-    }
-  });
 
   return (
     <div className="nav-container">

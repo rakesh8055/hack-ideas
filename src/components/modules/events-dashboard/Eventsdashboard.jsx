@@ -4,15 +4,18 @@ import Card from '../../common/card/Card';
 import Customsort from '../../common/custom-sort/Customsort';
 import { sortByOptions } from '../../../data/data';
 import Addevent from '../event/Addevent';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { db } from '../../../firebase/firebase.utils';
 import { collection, getDocs, updateDoc, doc } from '@firebase/firestore';
 import { setAllEvents } from '../../../redux/events/events.actions';
+import { BsPlus } from "react-icons/bs";
 
-const Eventsdashboard = () => {
+
+const Eventsdashboard = ({isLoggedIn}) => {
     const [events, setEvents] = useState([]);
     const [didSortChange, setSortChange] = useState(false);
     const dispatch = useDispatch();
+    const user = useSelector(state => state.user);
 
     const sortEventsBy = (sortBy, sortType) => {
         return events.sort((a, b) => {
@@ -65,9 +68,11 @@ const Eventsdashboard = () => {
         </div>
         <Addevent getEvents={getEvents}></Addevent>
         <div className='container d-flex flex-column'>
-            <div className='add-event-btn-contianer'>
-                <button className='border-0 rounded text-white add-event-btn' data-bs-toggle="modal" data-bs-target="#events-modal">Add Idea/Challenge</button> 
-            </div>
+            {isLoggedIn &&
+                <div className='add-event-btn-contianer'>
+                    <button className='border-0 rounded text-white add-event-btn' data-bs-toggle="modal" data-bs-target="#events-modal"><BsPlus/>Add</button> 
+                </div>
+            }
             <div className='row'>
                 {events.map((item) => 
                 <div key={item.id} className='col-md-4 col-sm-6 p-2 rounded'>
