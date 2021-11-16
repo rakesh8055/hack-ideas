@@ -2,4 +2,12 @@
     height: 100vh;
     background-color: #fff9e4;
     padding-top: 60px;
+
+    .add-event-btn-contianer {
+        padding: 20px;
+        .add-event-btn {
+            background-color: #372236;
+            float: right;
+        }
+    }
 }

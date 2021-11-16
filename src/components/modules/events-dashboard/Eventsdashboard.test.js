@@ -7,5 +7,5 @@ import Eventsdashboard from './Eventsdashboard';
 test('verify events dashboard title', () => {
     const { getByTestId } = render(<Eventsdashboard/>);
     const eventsTitle = getByTestId('events-title');
-    expect(eventsTitle.textContent).toBe('Events/Challenges');
+    expect(eventsTitle.textContent).toBe('Ideas/Challenges');
 });

@@ -75,6 +75,29 @@ const EVENTS = [
         sortBy: 'creationDate'
     }
 ]
+
+export const DEFAULT_TAGS = [
+  {
+    value: 0,
+    label: 'feature'
+  },
+  {
+    value: 1,
+    label: 'tech'
+  },
+  {
+    value: 2,
+    label: 'blockchain'
+  },
+  {
+    value: 3,
+    label: 'design'
+  },
+  {
+    value: 4,
+    label: 'ai/ml'
+  }
+]
   
   export default EVENTS;
   

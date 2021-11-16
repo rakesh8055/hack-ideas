@@ -54,7 +54,7 @@ const Navbar = () => {
                 {isLoggedIn ? <button className="border-0 rounded text-white" onClick={handleSignout}>Sign Out</button> :
                   <button type="button"
                   className="border-0 rounded text-white"
-                  data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                  data-bs-toggle="modal" data-bs-target="#login-modal"
                 >Login</button>
                 }
               </div>

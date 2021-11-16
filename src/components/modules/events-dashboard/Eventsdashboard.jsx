@@ -4,6 +4,7 @@ import EVENTS from '../../../data/data';
 import Card from '../../common/card/Card';
 import Customsort from '../../common/custom-sort/Customsort';
 import { sortByOptions } from '../../../data/data';
+import Addevent from '../event/Addevent';
 
 const Eventsdashboard = () => {
     const [events, setEvents] = useState(EVENTS);
@@ -28,10 +29,14 @@ const Eventsdashboard = () => {
     return(
     <div className='container-fluid events-dashboard overflow-scroll' id='events-dashboard'>
         <div className='d-flex justify-content-between p-3 ps-5 pe-5'>
-            <h4 data-testid='events-title'>Events/Challenges</h4>
+            <h4 data-testid='events-title'>Ideas/Challenges</h4>
             <Customsort handleSortSelectionChange={handleSortSelectionChange}/>
         </div>
-        <div className='container'>
+        <Addevent></Addevent>
+        <div className='container d-flex flex-column'>
+            <div className='add-event-btn-contianer'>
+                <button className='border-0 rounded text-white add-event-btn' data-bs-toggle="modal" data-bs-target="#events-modal">Add Idea/Challenge</button> 
+            </div>
             <div className='row'>
                 {events.map((item) => <div key={item.id} className='col-md-4 col-sm-6 p-2 rounded'><Card {...item}/></div>)}
             </div>
