@@ -49,7 +49,7 @@ const Addevent = (props) => {
                     <Select isMulti options={DEFAULT_TAGS} 
                     onChange={handleOnChange}></Select>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#events-modal">Submit</button>
             </form>
         </Modal>
     )

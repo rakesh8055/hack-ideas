@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './Eventsdashboard.styles.scss';
-import EVENTS from '../../../data/data';
 import Card from '../../common/card/Card';
 import Customsort from '../../common/custom-sort/Customsort';
 import { sortByOptions } from '../../../data/data';
 import Addevent from '../event/Addevent';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { db } from '../../../firebase/firebase.utils';
-import { collection, getDocs } from '@firebase/firestore';
+import { collection, getDocs, updateDoc, doc } from '@firebase/firestore';
 import { setAllEvents } from '../../../redux/events/events.actions';
 
 const Eventsdashboard = () => {
@@ -44,6 +43,16 @@ const Eventsdashboard = () => {
             console.log('Error getting events', e);
         }
     }
+
+    const updateLikes = async (eventId, likes) => {
+        const ref = doc(db, 'ideas', eventId);
+        
+        await updateDoc(ref, {
+            likes: likes + 1
+        });
+        getEvents();
+    }
+
     useEffect(() => {
         getEvents();
     }, [])
@@ -60,7 +69,10 @@ const Eventsdashboard = () => {
                 <button className='border-0 rounded text-white add-event-btn' data-bs-toggle="modal" data-bs-target="#events-modal">Add Idea/Challenge</button> 
             </div>
             <div className='row'>
-                {events.map((item) => <div key={item.id} className='col-md-4 col-sm-6 p-2 rounded'><Card {...item}/></div>)}
+                {events.map((item) => 
+                <div key={item.id} className='col-md-4 col-sm-6 p-2 rounded'>
+                    <Card {...item} updateLikes={updateLikes}/>
+                </div>)}
             </div>
         </div>
     </div>)
