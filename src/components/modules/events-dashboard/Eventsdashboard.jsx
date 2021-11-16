@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Eventsdashboard.styles.scss';
 import EVENTS from '../../../data/data';
 import Card from '../../common/card/Card';
 import Customsort from '../../common/custom-sort/Customsort';
 import { sortByOptions } from '../../../data/data';
 import Addevent from '../event/Addevent';
+import { useDispatch, useSelector } from 'react-redux';
+import { db } from '../../../firebase/firebase.utils';
+import { collection, getDocs } from '@firebase/firestore';
+import { setAllEvents } from '../../../redux/events/events.actions';
 
 const Eventsdashboard = () => {
-    const [events, setEvents] = useState(EVENTS);
+    const [events, setEvents] = useState([]);
     const [didSortChange, setSortChange] = useState(false);
+    const dispatch = useDispatch();
 
     const sortEventsBy = (sortBy, sortType) => {
         return events.sort((a, b) => {
@@ -22,9 +27,26 @@ const Eventsdashboard = () => {
         setSortChange(prev => !prev);
         if(value !== 'default') {
             const sortObj = sortByOptions.filter((item) => item.name === value);
-            setEvents(sortEventsBy(sortObj[0].sortBy, sortObj[0].sortType))
+           setEvents(sortEventsBy(sortObj[0].sortBy, sortObj[0].sortType))
         }
     }
+
+    const getEvents = async () => {
+        let eventsFromFirebase = [];
+        try {
+            const querySnapshot = await getDocs(collection(db, 'ideas'));
+            querySnapshot.forEach((doc) => {
+                eventsFromFirebase.push({...doc.data(), id: doc.id});
+            });
+            dispatch(setAllEvents(eventsFromFirebase));
+            setEvents(eventsFromFirebase);
+        } catch(e) {
+            console.log('Error getting events', e);
+        }
+    }
+    useEffect(() => {
+        getEvents();
+    }, [])
 
     return(
     <div className='container-fluid events-dashboard overflow-scroll' id='events-dashboard'>
@@ -32,7 +54,7 @@ const Eventsdashboard = () => {
             <h4 data-testid='events-title'>Ideas/Challenges</h4>
             <Customsort handleSortSelectionChange={handleSortSelectionChange}/>
         </div>
-        <Addevent></Addevent>
+        <Addevent getEvents={getEvents}></Addevent>
         <div className='container d-flex flex-column'>
             <div className='add-event-btn-contianer'>
                 <button className='border-0 rounded text-white add-event-btn' data-bs-toggle="modal" data-bs-target="#events-modal">Add Idea/Challenge</button> 

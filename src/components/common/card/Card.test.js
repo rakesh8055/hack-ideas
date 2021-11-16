@@ -6,7 +6,7 @@ import Card from './Card';
 
 const props = {
     title: 'title1',
-    text: 'text',
+    description: 'text',
     tags: ['tag1'],
     likes: 3
 }
@@ -20,7 +20,7 @@ test('verify card title is displayed', () => {
 test('verify card text is displayed', () => {
     const { getByTestId } = render(<Card {...props}/>);
     const text = getByTestId('card-text');
-    expect(text.textContent).toBe(props.text);
+    expect(text.textContent).toBe(props.description);
 });
 
 test('verify the tags are displayed', () => {

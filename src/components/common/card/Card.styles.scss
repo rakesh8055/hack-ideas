@@ -10,7 +10,9 @@
     .tags-container {
         overflow: hidden;
     }
-
+    .card-title {
+        text-transform: capitalize;
+    }
     .card-tags {
         background-color: var(--tertiary);
         font-weight: 500;
