@@ -6,9 +6,8 @@
     height: 60px;
     z-index: 1000;
     #navbarNavAltMarkup {
-        justify-content: right;
+        justify-content: flex-end;
       }
-
     .navbar-nav {
         text-align: right;
 
@@ -18,7 +17,14 @@
           }
         }
     }
+    .link {
+      color: #372236;
+      text-decoration: none;
 
+      &:hover {
+        color: var(--secondary);
+      }
+    }
     .nav-link {
         padding-right: 10px;
       }

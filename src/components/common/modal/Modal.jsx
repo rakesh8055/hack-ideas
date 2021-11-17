@@ -1,3 +1,4 @@
+import './Modal.styles.scss';
 const Modal = ({ modalId, title, isFooter, children }) => (
   <div
     className="modal fade"

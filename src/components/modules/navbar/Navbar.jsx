@@ -16,7 +16,7 @@ const Navbar = ({isLoggedIn}) => {
   return (
     <div className="nav-container">
       <nav className="navbar navbar-expand-lg navbar-dark">
-        <div className="container-fluid">
+        <div className="container-fluid nav-bar-container">
           <a data-testid='logo' className="navbar-brand" href="/">
             <Logo height='40px' width='50px'/>
           </a>
@@ -33,12 +33,16 @@ const Navbar = ({isLoggedIn}) => {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <a data-testid='home' className="nav-link" aria-current="page" href="#home-section">
-                Home
-              </a>
-              <a data-testid='ideas' className="nav-link" href="#events-dashboard">
-                Ideas/Challenges
-              </a>
+              <div className="nav-link active">
+                <a data-testid='home' className='link' aria-current="page" href="#home-section">
+                  Home
+                </a>
+              </div>
+              <div className="nav-link">
+                <a data-testid='ideas' className='link'  href="#events-dashboard">
+                  Ideas/Challenges
+                </a>
+              </div>
               <div className="login-btn d-flex justify-content-end align-items-center ps-4">
                 {isLoggedIn ? <button className="border-0 rounded text-white" onClick={handleSignout}>Sign Out</button> :
                   <button type="button"

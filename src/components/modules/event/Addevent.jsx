@@ -5,6 +5,7 @@ import Select from 'react-select';
 import { useForm } from './useForm';
 import { db } from '../../../firebase/firebase.utils';
 import { collection, addDoc, getDocs } from '@firebase/firestore';
+import './Addevent.styles.scss';
 
 const Addevent = (props) => {
     const [tags, setTags] = useState([]);
@@ -46,10 +47,13 @@ const Addevent = (props) => {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="tags" className="form-label">Tags</label>
-                    <Select isMulti options={DEFAULT_TAGS} 
+                    <Select className='select' isMulti options={DEFAULT_TAGS} 
                     onChange={handleOnChange}></Select>
                 </div>
-                <button type="submit" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#events-modal">Submit</button>
+                <div>
+                    <button type="submit" className="btn submit-btn" data-bs-toggle="modal" data-bs-target="#events-modal">Submit</button>
+                </div>
+                
             </form>
         </Modal>
     )
