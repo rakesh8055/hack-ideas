@@ -20,12 +20,10 @@ const Addevent = (props) => {
         let tmpDate = new Date();
         let currentDate = tmpDate.getFullYear().toString() + '-' + tmpDate.getMonth().toString()+'-' + tmpDate.getDate().toString();
 
-        console.log({...values, tags: tags, likes: 0, creationDate: currentDate})
         try {
             const docRef = await addDoc(collection(db, 'ideas'), 
                {...values, tags: tags, likes: 0, creationDate: currentDate}
             );
-            console.log(docRef.id);
             props.getEvents();
         }catch(e) {
             console.log('Error adding doc: ', e);
